@@ -1,0 +1,27 @@
+{
+    "name": "sashaaro/GraphPathFinder",
+    "description": "GraphPathFinder",
+    "homepage": "http://github.com/sashaaro/GraphPathFinder",
+    "license": "MIT",
+    "keywords": ["graph"],
+    "version": "0.01",
+    "authors": [
+        {
+            "name": "Alexandr Arofikin",
+            "email": "sashaaro@gmail.com",
+            "homepage": "http://github.com/sashaaro/"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "GraphPathFinder": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
