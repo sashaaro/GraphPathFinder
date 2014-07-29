@@ -5,6 +5,8 @@ namespace GraphPathFinder;
 /**
  * Class GraphPathFinder
  * @package GraphPathFinder
+ *
+ * @author Alexandr Arofikin <sashaaro@gmail.com>
  */
 class GraphPathFinder
 {
@@ -24,12 +26,20 @@ class GraphPathFinder
     protected $end;
 
 
+    /**
+     * @var INodeFinder|null
+     */
     protected $finder;
 
     /**
      * @var GraphPath[]
      */
     public $paths = [];
+
+    /**
+     * @var int
+     */
+    protected $maxStep;
 
 
     public function __construct($start, $end, INodeFinder $finder = null, array $graph = [], $checkIntegrity = true)
@@ -55,7 +65,11 @@ class GraphPathFinder
 
     public function find($all = false, $maxStep = 100)
     {
+        if(!is_int($maxStep) || $maxStep < 1)
+            throw new \Exception("maxStep invalid..is not integer or less than 1");
+
         $this->paths = [];
+        $this->maxStep = $maxStep;
 
         $startPath = new GraphPath();
         $startPath->addNode($this->start);
@@ -93,7 +107,7 @@ class GraphPathFinder
         else $nodes = [];
 
         foreach($nodes as $n){
-            if(in_array($n, $path->getNodes())) //TODO check lt $maxStep
+            if(in_array($n, $path->getNodes()) || count($path->getNodes()) -1 >= $this->maxStep)
                 continue;
             $p = clone($path);
             $p->addNode($n);
