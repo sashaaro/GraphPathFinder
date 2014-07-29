@@ -1,15 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Sasha
- * Date: 29.07.14
- * Time: 8:41
- */
 
 namespace GraphPathFinder;
 
-
+/**
+ * Interface INodeFinder
+ * @package GraphPathFinder
+ */
 interface INodeFinder
 {
-    public function findCloseNodes($node);
+    /**
+     * @param string|int $node
+     * @return array
+     */
+    public function findNodes($node);
 } 
