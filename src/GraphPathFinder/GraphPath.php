@@ -9,7 +9,7 @@
 namespace GraphPathFinder;
 
 
-class GraphPath implements \ArrayAccess
+class GraphPath implements \ArrayAccess, \Iterator
 {
     protected $nodes = [];
 
@@ -21,6 +21,62 @@ class GraphPath implements \ArrayAccess
         $this->nodes[] = $node;
     }
 
+
+    /**
+     * (PHP 5 &gt;= 5.0.0)<br/>
+     * Return the current element
+     * @link http://php.net/manual/en/iterator.current.php
+     * @return mixed Can return any type.
+     */
+    public function current()
+    {
+        return current($this->nodes);
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.0.0)<br/>
+     * Move forward to next element
+     * @link http://php.net/manual/en/iterator.next.php
+     * @return void Any returned value is ignored.
+     */
+    public function next()
+    {
+        return next($this->nodes);
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.0.0)<br/>
+     * Return the key of the current element
+     * @link http://php.net/manual/en/iterator.key.php
+     * @return mixed scalar on success, or null on failure.
+     */
+    public function key()
+    {
+        return key($this->nodes);
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.0.0)<br/>
+     * Checks if current position is valid
+     * @link http://php.net/manual/en/iterator.valid.php
+     * @return boolean The return value will be casted to boolean and then evaluated.
+     * Returns true on success or false on failure.
+     */
+    public function valid()
+    {
+        return key($this->nodes) !== null;
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.0.0)<br/>
+     * Rewind the Iterator to the first element
+     * @link http://php.net/manual/en/iterator.rewind.php
+     * @return void Any returned value is ignored.
+     */
+    public function rewind()
+    {
+        reset($this->nodes);
+    }
 
     /**
      * @return int
@@ -59,7 +115,7 @@ class GraphPath implements \ArrayAccess
      */
     public function offsetExists($offset)
     {
-        // TODO: Implement offsetExists() method.
+        return array_key_exists($offset, $this->nodes);
     }
 
     /**
@@ -73,7 +129,7 @@ class GraphPath implements \ArrayAccess
      */
     public function offsetGet($offset)
     {
-        // TODO: Implement offsetGet() method.
+        return $this->offsetExists($offset) ? $this->nodes[$offset] : null;
     }
 
     /**
@@ -90,7 +146,12 @@ class GraphPath implements \ArrayAccess
      */
     public function offsetSet($offset, $value)
     {
-        // TODO: Implement offsetSet() method.
+        if (is_null($offset)) {
+            $this->nodes[] = &$value;
+        } else {
+            $this->nodes[$offset] = &$value;
+        }
+        return $value;
     }
 
     /**
@@ -104,11 +165,8 @@ class GraphPath implements \ArrayAccess
      */
     public function offsetUnset($offset)
     {
-        // TODO: Implement offsetUnset() method.
-    }
-
-    function __call($name, $arguments)
-    {
-        // TODO: Implement __call() method.
+        if ($this->offsetExists($offset)) {
+            unset($this->nodes[$offset]);
+        }
     }
 }

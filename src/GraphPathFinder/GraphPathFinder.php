@@ -84,10 +84,10 @@ class GraphPathFinder
             $step = $maxStep;
             foreach($this->paths as $path)
                 if(count($path->getNodes()) < $step){
-                    $result = [$path];
+                    $result = $path;
                     $step = count($path->getNodes());
                 }elseif(count($path->getNodes()) == $step)
-                    $result[] = $path;
+                    $result = $path;
             return $result;
         }else
             return $this->paths;
