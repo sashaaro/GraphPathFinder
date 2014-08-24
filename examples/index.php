@@ -19,17 +19,19 @@ $graph = [
     [1, 3, 4, 6],
     [1, 2, 4, 5, 6],
     [2, 3, 5],
-    [3, 4, 6, 7],
+    [3, 4, 6, 7, 9],
     [2, 3, 5],
     [5],
-    [1]
+    [1],
+    [5]
 ];
 
-$finder = new \GraphPathFinder\GraphPathFinder(2, 5, null, $graph);
+$finder = new \GraphPathFinder\GraphPathFinder(2, 7, null, $graph);
 
-$findPath = $finder->find(false, 3);
+$findPath = $finder->find(false);
 echo '<body>';
 $render = new \GraphPathFinder\GraphRenderer();
-$render->render($graph, $findPath->getNodes());
+if($findPath)
+    $render->render($graph, $findPath->getNodes());
 echo '</body>';
 ?>
