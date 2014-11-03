@@ -42,7 +42,7 @@ class GraphPathFinder
     protected $maxStep;
 
 
-    public function __construct($start, $end, INodeFinder $finder = null, array $graph = [], $checkIntegrity = true)
+    public function __construct($start, $end, NodeFinderInterface $finder = null, array $graph = [], $checkIntegrity = true)
     {
         if(is_null($finder) && empty($graph))
             throw new \Exception("no specified IFinderCloseNodes and graph empty");
