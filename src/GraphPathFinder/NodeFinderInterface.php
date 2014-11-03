@@ -3,10 +3,10 @@
 namespace GraphPathFinder;
 
 /**
- * Interface INodeFinder
+ * Interface NodeFinderInterface
  * @package GraphPathFinder
  */
-interface INodeFinder
+interface NodeFinderInterface
 {
     /**
      * @param string|int $node
