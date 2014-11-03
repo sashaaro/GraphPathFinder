@@ -1,7 +1,7 @@
 <?php
 
 
-require_once(__DIR__.'/../src/GraphPathFinder/INodeFinder.php');
+require_once(__DIR__.'/../src/GraphPathFinder/NodeFinderInterface.php');
 foreach (glob(__DIR__.'/../src/GraphPathFinder/*.php') as $filename)
 {
     require_once $filename;
