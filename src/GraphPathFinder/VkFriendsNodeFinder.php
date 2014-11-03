@@ -9,7 +9,7 @@
 namespace GraphPathFinder;
 
 
-class VkFriendsNodeFinder implements INodeFinder
+class VkFriendsNodeFinder implements NodeFinderInterface
 {
     /**
      * @param string|int $node
