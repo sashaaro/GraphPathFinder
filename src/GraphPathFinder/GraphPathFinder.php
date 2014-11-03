@@ -27,7 +27,7 @@ class GraphPathFinder
 
 
     /**
-     * @var INodeFinder|null
+     * @var NodeFinderInterface|null
      */
     protected $finder;
 
