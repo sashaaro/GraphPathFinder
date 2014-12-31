@@ -11,11 +11,6 @@ namespace GraphPathFinder;
 class GraphPathFinder
 {
     /**
-     * @var array
-     */
-    protected $graph;
-
-    /**
      * @var int
      */
     protected $start;
@@ -42,25 +37,11 @@ class GraphPathFinder
     protected $maxStep;
 
 
-    public function __construct($start, $end, NodeFinderInterface $finder = null, array $graph = [], $checkIntegrity = true)
+    public function __construct($start, $end, NodeFinderInterface $finder = null, $checkIntegrity = true)
     {
-        if(is_null($finder) && empty($graph))
-            throw new \Exception("no specified IFinderCloseNodes and graph empty");
-
-        $this->graph = $graph;
         $this->start = $start;
         $this->end = $end;
         $this->finder = $finder;
-
-        if($checkIntegrity){
-            foreach($this->graph as $node => $nodes)
-                foreach($nodes as $n){
-                    if(!array_key_exists($n, $this->paths) || !is_array($this->paths[$n]))
-                        $this->paths[$n] = [];
-                    if(!array_search($node, $this->paths[$n]))
-                        $this->paths[$n][] = $node;
-                }
-        }
     }
 
     public function find($all = false, $maxStep = 100)
@@ -100,11 +81,7 @@ class GraphPathFinder
      */
     protected function recursiveFind($start, $path)
     {
-        if(empty($this->graph)){
-            $nodes = $this->finder->findNodes($start);
-        }elseif(array_key_exists($start, $this->graph))
-            $nodes = $this->graph[$start];
-        else $nodes = [];
+        $nodes = $this->finder->findNodes($start);
 
         foreach($nodes as $n){
             if(in_array($n, $path->getNodes()) || count($path->getNodes()) -1 >= $this->maxStep)

@@ -1,7 +1,7 @@
 <?php
 
 
-require_once(__DIR__.'/../src/GraphPathFinder/NodeFinderInterface.php');
+require_once(__DIR__.'/../src/GraphPathFinder/NodeFinderInterface.php'); //TODO autoload
 foreach (glob(__DIR__.'/../src/GraphPathFinder/*.php') as $filename)
 {
     require_once $filename;
@@ -25,8 +25,9 @@ $graph = [
     [1],
     [5]
 ];
+$nodeFinder = new ArrayNodeFinder($graph);
 
-$finder = new \GraphPathFinder\GraphPathFinder(2, 7, null, $graph);
+$finder = new \GraphPathFinder\GraphPathFinder(2, 7, $nodeFinder);
 
 $findPath = $finder->find(false);
 echo '<body>';
