@@ -21,7 +21,7 @@ class GraphPathFinderTest extends PHPUnit_Framework_TestCase
         $finder = new \GraphPathFinder\GraphPathFinder(2, 7, $nodeFinder);
 
         $findPath = $finder->find(false);
-        //$this->assertEquels($findPath, );
+        //$this->assertEquals($findPath, );
     }
 }
  
