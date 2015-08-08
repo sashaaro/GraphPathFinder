@@ -49,7 +49,7 @@ class ArrayNodeFinder implements NodeFinderInterface
                 if (!array_key_exists($n, $this->graph) || !is_array($this->graph[$n])) {
                     $this->graph[$n] = [];
                 }
-                if (!array_search($node, $this->paths[$n])) {
+                if (!array_search($node, $this->graph[$n])) {
                     $this->graph[$n][] = $node;
                 }
             }

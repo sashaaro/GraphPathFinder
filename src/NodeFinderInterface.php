@@ -9,6 +9,7 @@ namespace Sashaaro\GraphPathFinder;
 interface NodeFinderInterface
 {
     /**
+     * Find parents (neighbor nodes)
      * @param string|int $node
      * @return array
      */
