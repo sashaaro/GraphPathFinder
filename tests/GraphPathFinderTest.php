@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class GraphPathFinderTest
+ */
 class GraphPathFinderTest extends PHPUnit_Framework_TestCase
 {
     public function testFind()
@@ -21,11 +24,7 @@ class GraphPathFinderTest extends PHPUnit_Framework_TestCase
         $finder = new \Sashaaro\GraphPathFinder\GraphPathFinder(2, 7, $nodeFinder);
         /** @var \Sashaaro\GraphPathFinder\GraphPath $findPath */
         $findPath = $finder->findOne();
-
         $this->assertEquals($findPath->getNodes(), [2, 6, 5, 7]);
-
-        $findPaths = $finder->findAll();
-        var_dump($findPaths);
     }
 }
  
