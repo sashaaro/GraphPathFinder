@@ -1,6 +1,6 @@
 <?php
 
-namespace GraphPathFinder;
+namespace Sashaaro\GraphPathFinder;
 
 /**
  * Interface NodeFinderInterface

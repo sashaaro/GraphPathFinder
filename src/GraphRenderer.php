@@ -1,6 +1,6 @@
 <?php
 
-namespace GraphPathFinder;
+namespace Sashaaro\GraphPathFinder;
 
 
 class GraphRenderer
@@ -18,15 +18,19 @@ class GraphRenderer
 
     public function render(array $graph, array $findPath = null, $processOutput = false)
     {
-        if($this->itemView && !is_file($this->itemView))
+        if ($this->itemView && !is_file($this->itemView)) {
             throw new \Exception('property itemView is not file');
+        }
 
         $output = '';
         $renderNodes = [];
-        foreach($graph as $k => $path) {
-            foreach($path as $i => $node){
-                if(!in_array($node, $renderNodes)){
-                    $output .= '<div class="'.$this->nodeClass.'" id="node'.$node.'" style="margin-top:'.(($k + 1)*15).'px; margin-left: '.(($i + 1)*100 - rand(5,40)).'px">'.
+        foreach ($graph as $k => $path) {
+            foreach ($path as $i => $node) {
+                if (!in_array($node, $renderNodes)) {
+                    $output .= '<div class="'.$this->nodeClass.'" id="node'.$node.'" style="margin-top:'.(($k + 1) * 15).'px; margin-left: '.(($i + 1) * 100 - rand(
+                                5,
+                                40
+                            )).'px">'.
                         ($this->itemView ? include($this->itemView) : $node).
                         '</div>';
                     $renderNodes[] = $node;
@@ -35,27 +39,32 @@ class GraphRenderer
         }
         $output .= '<div id="lines"></div>';
 
-        if($findPath)
+        if ($findPath) {
             $findPath = array_flip($findPath);
+        }
         $buildLine = [];
         $output .= '<script>';
-        foreach($graph as $k => $path) {
-            foreach($path as $node){
-                if(in_array($k.$node, $buildLine))
+        foreach ($graph as $k => $path) {
+            foreach ($path as $node) {
+                if (in_array($k.$node, $buildLine)) {
                     continue;
+                }
 
                 $output .= 'connect(document.getElementById("node'.$node.'"), document.getElementById("node'.$k.'")'.
-                    ($findPath && array_key_exists($node, $findPath) && array_key_exists($k, $findPath) && abs($findPath[$node] - $findPath[$k]) == 1 ? ', "'.$this->colorPath.'"' : ', "'.$this->colorLines.'"') .');';
+                    ($findPath && array_key_exists($node, $findPath) && array_key_exists($k, $findPath) && abs(
+                        $findPath[$node] - $findPath[$k]
+                    ) == 1 ? ', "'.$this->colorPath.'"' : ', "'.$this->colorLines.'"').');';
                 $buildLine[] = $node.$k;
             }
         }
         $output .= '</script>';
 
 
-        if($processOutput)
+        if ($processOutput) {
             echo $output;
-        else
+        } else {
             return $output;
+        }
     }
 
     /**

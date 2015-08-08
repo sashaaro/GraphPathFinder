@@ -1,0 +1,23 @@
+{
+  "name": "sashaaro/graph-path-finder",
+  "description": "Graph path finder",
+  "license": "MIT",
+  "keywords": ["graph"],
+  "authors": [
+    {
+      "name": "Alexandr Arofikin",
+      "email": "sashaaro@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.0.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Sashaaro\\GraphPathFinder\\": "src"
+    }
+  }
+}

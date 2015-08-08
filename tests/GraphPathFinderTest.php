@@ -17,11 +17,15 @@ class GraphPathFinderTest extends PHPUnit_Framework_TestCase
             [5]
         ];
 
-        $nodeFinder = new \GraphPathFinder\ArrayNodeFinder($graph);
-        $finder = new \GraphPathFinder\GraphPathFinder(2, 7, $nodeFinder);
+        $nodeFinder = new \Sashaaro\GraphPathFinder\ArrayNodeFinder($graph);
+        $finder = new \Sashaaro\GraphPathFinder\GraphPathFinder(2, 7, $nodeFinder);
+        /** @var \Sashaaro\GraphPathFinder\GraphPath $findPath */
+        $findPath = $finder->findOne();
 
-        $findPath = $finder->find(false);
-        //$this->assertEquals($findPath, );
+        $this->assertEquals($findPath->getNodes(), [2, 6, 5, 7]);
+
+        $findPaths = $finder->findAll();
+        var_dump($findPaths);
     }
 }
  
