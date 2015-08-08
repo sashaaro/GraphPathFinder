@@ -4,16 +4,15 @@ Looking for the shortest way or all the way from the specified node to the end. 
 
 ```php
 $graph = [
-    [],
-    [2, 3, 8],
-    [1, 3, 4, 6],
-    [1, 2, 4, 5, 6],
-    [2, 3, 5],
-    [3, 4, 6, 7, 9],
-    [2, 3, 5],
-    [5],
-    [1],
-    [5]
+    1 => [2, 3, 8],
+    2 => [1, 3, 4, 6],
+    3 => [1, 2, 4, 5, 6],
+    4 => [2, 3, 5],
+    5 => [3, 4, 6, 7, 9],
+    6 => [2, 3, 5],
+    7 => [5],
+    8 => [1],
+    9 => [5]
 ];
 
 $nodeFinder = new \GraphPathFinder\ArrayNodeFinder($graph);
