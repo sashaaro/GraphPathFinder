@@ -35,7 +35,12 @@ class GraphPathFinder
     protected $maxStep;
 
 
-    public function __construct($start, $end, NodeFinderInterface $finder = null, $checkIntegrity = true)
+    /**
+     * @param int|string $start
+     * @param int|string $end
+     * @param NodeFinderInterface $finder
+     */
+    public function __construct($start, $end, NodeFinderInterface $finder = null)
     {
         $this->start = $start;
         $this->end = $end;

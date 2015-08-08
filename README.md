@@ -19,7 +19,9 @@ $graph = [
 $nodeFinder = new \GraphPathFinder\ArrayNodeFinder($graph);
 $finder = new \GraphPathFinder\GraphPathFinder(2, 7, $nodeFinder);
 
-$findPath = $finder->find(false);
+/** @var \Sashaaro\GraphPathFinder\GraphPath $findPath */
+$findPath = $finder->find(false); //[2, 6, 5, 7]
+
 $render = new \GraphPathFinder\GraphRenderer();
 $render->render($graph, $findPath->getNodes());
 ```
