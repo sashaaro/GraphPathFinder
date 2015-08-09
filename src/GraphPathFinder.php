@@ -55,6 +55,7 @@ class GraphPathFinder
      */
     public function findOne($maxStep = 100)
     {
+        //@todo refactoring
         $this->find($maxStep);
         $result = [];
         $step = $maxStep;
