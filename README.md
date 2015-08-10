@@ -24,3 +24,5 @@ $findPath = $finder->findOne(); //[2, 6, 5, 7]
 $render = new \GraphPathFinder\GraphRenderer();
 $render->render($graph, $findPath->getNodes());
 ```
+
+[alt tag](https://raw.githubusercontent.com/sashaaro/GraphPathFinder/master/examples/1.png)
