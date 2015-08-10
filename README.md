@@ -25,4 +25,4 @@ $render = new \GraphPathFinder\GraphRenderer();
 $render->render($graph, $findPath->getNodes());
 ```
 
-[alt tag](https://raw.githubusercontent.com/sashaaro/GraphPathFinder/master/examples/1.png)
+![example](https://raw.githubusercontent.com/sashaaro/GraphPathFinder/master/examples/1.png)
