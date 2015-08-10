@@ -1,4 +1,4 @@
-# GraphPathFinder
+# GraphPathFinder #
 
 Looking for the shortest way or all the way from the specified node to the end. You have override NodeFinderInterface, which find child nodes.
 
@@ -26,3 +26,21 @@ $render->render($graph, $findPath->getNodes());
 ```
 
 ![example](https://raw.githubusercontent.com/sashaaro/GraphPathFinder/master/examples/1.png)
+
+## Installation ##
+Add package and repository to composer.json
+```
+"require": {
+    ...
+    "sashaaro/graph-path-finder": "*"
+},
+"repositories": [
+    ....
+    {
+        "type": "vcs",
+        "url": "https://github.com/sashaaro/GraphPathFinder"
+    }
+]
+```
+
+Composer update
